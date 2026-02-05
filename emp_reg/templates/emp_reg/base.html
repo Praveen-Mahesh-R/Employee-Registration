@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="{%static 'css/emp_reg.css' %}">
+        <title>Employee Registration</title>
+    </head>
+    <body>
+        <header class = "page-header">
+            <div class="container">
+                <a href="{% url 'emp_new' %}" class="top-menu">
+                    {% include './icons/add-new-user-svgrepo-com.svg' %}
+                </a>
+                <h1><a href="/" style="text-decoration:none">Employee Registration</a></h1>
+            </div>
+        </header>
+        <main class="container">
+            <div class="row">
+                <div class="col">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
