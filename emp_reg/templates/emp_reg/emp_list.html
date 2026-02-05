@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Employee Registration</title>
+    </head>
+    <body>
+        <header>
+            <h1><a href="/">Employee Registration</a></h1>
+        </header>
+        {% for emps in emp %}
+            <div>
+                <p><b>Full name: </b>{{ emps.first_name|linebreaksbr  }} {{ emps.last_name|linebreaksbr }}</p>  
+                <p><b>Email: </b>{{ emps.email|linebreaksbr }}</p>
+                <p><b>Department: </b>{{ emps.department|linebreaksbr }}</p>   
+                <p><b>Role: </b>{{ emps.role|linebreaksbr }}</p>
+                <p><b>Date Joined: </b>{{ emps.join_date|linebreaksbr }}</p>             
+            </div>
+        {% endfor %}
+    </body>
+</html>
