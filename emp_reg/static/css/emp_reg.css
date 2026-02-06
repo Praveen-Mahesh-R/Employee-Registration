@@ -11,6 +11,7 @@
 .page-header h1 a:active {
     color: aliceblue;
     font-family: 'Times New Roman', Times, serif;
+    text-decoration: none;
     
 }
 .emp-table{
@@ -51,4 +52,36 @@
     max-width: 40px;
     -webkit-filter: invert(90%);
     filter: invert(90%);
+}
+.yes-button {
+    float: left;
+    padding: 4px;
+    
+}
+
+.yes-button a {
+    background-color: rgb(255, 89, 60);
+    text-decoration: none;
+    color: #ffffff;
+    padding-top: 2px;
+    padding-bottom: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 6px;
+}
+.no-button {
+    float: left;
+    padding: 4px;
+    margin-left: 5px;
+}
+
+.no-button a {
+    background-color: rgb(30, 117, 248);
+    text-decoration: none;
+    color: #ffffff;
+    padding-top: 2px;
+    padding-bottom: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 6px;
 }

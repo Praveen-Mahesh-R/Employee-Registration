@@ -34,3 +34,12 @@ def emp_edit(request, pk):
     else:
         form = EmpForm(instance=post)
     return render(request, 'emp_reg/emp_edit.html', {'form': form})
+
+def emp_remove(request, pk):
+    post = get_object_or_404(Employee, pk=pk)
+    return render(request, 'emp_reg/emp_remove.html', {'emp': post})
+
+def emp_delete(request, pk):
+    post = get_object_or_404(Employee, pk=pk)
+    post.delete()
+    return redirect('emp_list')

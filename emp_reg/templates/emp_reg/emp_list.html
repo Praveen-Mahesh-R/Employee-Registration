@@ -21,6 +21,9 @@
                         <a href="{% url 'emp_edit' pk=emps.pk %}">
                             {% include './icons/pencil-fill.svg' %}
                         </a>
+                        <a href="{% url 'emp_remove' pk=emps.pk %}">
+                            {% include './icons/trash.svg' %}
+                        </a>
                     </td>
                 </tr>
             {% endfor %}
