@@ -17,6 +17,11 @@
     border: 1px solid;
     width: 100%;
 }
+
+.emp-table td svg{
+    color: black;
+    max-width: 40px;
+}
 .emp-table th{
     height: 70px;
     background-color:#43dd64;
@@ -45,4 +50,5 @@
 .top-menu svg {
     max-width: 40px;
     -webkit-filter: invert(90%);
+    filter: invert(90%);
 }

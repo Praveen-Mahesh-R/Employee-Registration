@@ -7,6 +7,8 @@
                 <th>Department</th>
                 <th>Role</th>
                 <th>Date Joined</th>
+                <th></th>
+
             </tr>
             {% for emps in emp %}
                 <tr>
@@ -15,6 +17,11 @@
                     <td>{{ emps.department|linebreaksbr }}</td>
                     <td>{{ emps.role|linebreaksbr }}</td>
                     <td>{{ emps.join_date|linebreaksbr }}</td>
+                    <td>
+                        <a href="{% url 'emp_edit' pk=emps.pk %}">
+                            {% include './icons/pencil-fill.svg' %}
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
         </table>

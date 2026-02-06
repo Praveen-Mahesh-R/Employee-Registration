@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Employee
 from .forms import EmpForm
+from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 import datetime
 
@@ -19,4 +20,17 @@ def emp_new(request):
             return redirect('emp_list')
     else:
         form = EmpForm()
+    return render(request, 'emp_reg/emp_edit.html', {'form': form})
+
+def emp_edit(request, pk):
+    post = get_object_or_404(Employee, pk=pk)
+    if request.method == "POST":
+        form = EmpForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return redirect('emp_list')
+    else:
+        form = EmpForm(instance=post)
     return render(request, 'emp_reg/emp_edit.html', {'form': form})
