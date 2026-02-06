@@ -38,20 +38,17 @@
 .emp-table{
     border: 1px solid;
 }
-
-.top-menu,
-.top-menu:hover,
-.top-menu:visited {
-    
-    color: #ffffff;
+.top-menu {
     float: right;
-    font-size: 26pt;
-    margin-right: 20px;
+    text-decoration: none;
+    color: aliceblue;
 }
+
 .top-menu svg {
     max-width: 40px;
     -webkit-filter: invert(90%);
     filter: invert(90%);
+    float: right;
 }
 .yes-button {
     float: left;
