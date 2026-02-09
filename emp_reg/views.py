@@ -16,6 +16,8 @@ def emp_new(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
+            if post.join_date is None:
+                post.join_date = datetime.date.today
             post.save()
             return redirect('emp_list')
     else:
@@ -29,6 +31,8 @@ def emp_edit(request, pk):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
+            if post.join_date is None:
+                post.join_date = datetime.date.today()
             post.save()
             return redirect('emp_list')
     else:
