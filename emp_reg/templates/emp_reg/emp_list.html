@@ -16,7 +16,7 @@
                     <td>{{ emps.email|linebreaksbr }}</td>
                     <td>{{ emps.department|linebreaksbr }}</td>
                     <td>{{ emps.role|linebreaksbr }}</td>
-                    <td>{{ emps.join_date|linebreaksbr }}</td>
+                    <td>{{ emps.join_date|date:"d-m-Y"}}</td>
                     <td>
                         <a href="{% url 'emp_edit' pk=emps.pk %}">
                             {% include './icons/pencil-fill.svg' %}

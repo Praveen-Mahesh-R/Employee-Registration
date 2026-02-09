@@ -17,7 +17,7 @@ def emp_new(request):
             post = form.save(commit=False)
             post.author = request.user
             if post.join_date is None:
-                post.join_date = datetime.date.today
+                post.join_date = datetime.date.today()
             post.save()
             return redirect('emp_list')
     else:

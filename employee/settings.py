@@ -107,9 +107,18 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Kolkata'
 
-USE_I18N = True
+USE_I18N = False
 
 USE_TZ = True
+
+# Source - https://stackoverflow.com/a/30911955
+# Posted by Vaulstein, modified by community. See post 'Timeline' for change history
+# Retrieved 2026-02-09, License - CC BY-SA 4.0
+
+DATE_INPUT_FORMATS = '%d-%m-%Y'
+
+DATE_FORMAT = '%d-%m-%Y'
+
 
 
 # Static files (CSS, JavaScript, Images)
