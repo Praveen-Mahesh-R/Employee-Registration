@@ -1,12 +1,14 @@
 from django import forms
-
+from django.forms import ModelForm
 from .models import Employee
 
-class EmpForm(forms.ModelForm):
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+class EmpForm(ModelForm):
     class Meta:
         model = Employee
         fields = "__all__"
-        model.join_date = forms.DateField(
-            widget=forms.DateInput(format='%d/%m/%Y'),
-            input_formats=('%d/%m/%Y')
-        )
+        widgets = {
+            'join_date' : DateInput()
+        }
