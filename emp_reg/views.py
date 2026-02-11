@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Employee
+from django.http import JsonResponse
+from .models import Employee, Role
 from .forms import EmpForm
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
@@ -47,3 +48,8 @@ def emp_delete(request, pk):
     post = get_object_or_404(Employee, pk=pk)
     post.delete()
     return redirect('emp_list')
+
+def load_roles(request):
+    department_id = request.GET.get('department')
+    roles = Role.objects.filter(department_id=department_id).all()
+    return render(request, 'emp_reg/role_list.html', {'roles': roles})

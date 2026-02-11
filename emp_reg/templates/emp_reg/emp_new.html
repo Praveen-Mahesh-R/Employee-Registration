@@ -2,9 +2,30 @@
 
 {% block content %}
     <h2>Add New Employee</h2>
-    <form method="POST" class="emp-form">{% csrf_token %}
+    <form method="POST" id="emp-form" data-roles-url="{% url 'ajax_load_roles' %}">
+        {% csrf_token %}
         {{ form.as_p }}
         <p>Leave Join date empty to use today's date</p>
         <button type="submit" class="save btn btn-secondary">Save</button>
     </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $("#id_department").change(function () {
+            var url = $("#emp-form").attr("data-roles-url"); 
+            var departmentId = $(this).val();  
+
+            $.ajax({                      
+                url: url,                 
+                data: {
+                    'department': departmentId     
+                },
+                success: function (data) {  
+                    console.log(data);
+                    $("#id_role").html(data);
+                }
+            });
+
+        });
+    </script>
 {% endblock %}
