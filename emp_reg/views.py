@@ -22,7 +22,7 @@ def emp_new(request):
             return redirect('emp_list')
     else:
         form = EmpForm()
-    return render(request, 'emp_reg/emp_edit.html', {'form': form})
+    return render(request, 'emp_reg/emp_new.html', {'form': form})
 
 def emp_edit(request, pk):
     post = get_object_or_404(Employee, pk=pk)
