@@ -8,7 +8,7 @@ import datetime
 
 # Create your views here.
 def emp_list(request):
-    emp = Employee.objects.order_by('join_date')
+    emp = Employee.objects.filter(show = True).order_by('join_date')
     return render(request, 'emp_reg/emp_list.html', {'emp' : emp})
 
 def emp_new(request):
@@ -46,7 +46,8 @@ def emp_remove(request, pk):
 
 def emp_delete(request, pk):
     post = get_object_or_404(Employee, pk=pk)
-    post.delete()
+    post.show = False
+    post.save()
     return redirect('emp_list')
 
 def load_roles(request):

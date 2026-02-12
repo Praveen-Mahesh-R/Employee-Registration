@@ -20,6 +20,7 @@ class Employee(models.Model):
     department = models.ForeignKey(Department, on_delete=models.SET_NULL,blank=True,null=True)
     role = models.ForeignKey(Role, on_delete=models.SET_NULL,blank=True,null=True)
     join_date = models.DateField(null=True, blank=True)
+    show = models.BooleanField(default=True)
 
 
     def __str__(self):

@@ -9,7 +9,7 @@ class DateInput(forms.DateInput):
 class EmpForm(ModelForm):
     class Meta:
         model = Employee
-        fields = "__all__"
+        exclude = ["show",]
         widgets = {
             'join_date' : DateInput()
         }
