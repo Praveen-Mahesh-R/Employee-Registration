@@ -12,6 +12,7 @@
             </tr>
             {% for emps in emp %}
                 <tr>
+                    <td>{{ emps.emp_id|linebreaksbr }}</td>
                     <td>{{ emps.first_name|linebreaksbr  }} {{ emps.last_name|linebreaksbr }}</td>
                     <td>{{ emps.email|linebreaksbr }}</td>
                     <td>{{ emps.department|linebreaksbr }}</td>

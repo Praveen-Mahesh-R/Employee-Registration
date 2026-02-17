@@ -7,12 +7,15 @@ class DateInput(forms.DateInput):
     input_type = 'date'
 
 class EmpForm(ModelForm):
+
+
     class Meta:
         model = Employee
-        exclude = ["show",]
+        exclude = ["show","emp_id"]
         widgets = {
             'join_date' : DateInput()
         }
+    
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -28,6 +31,7 @@ class EmpForm(ModelForm):
             self.fields['role'].queryset = self.instance.department.role_set.order_by('name')
 
     def clean(self):
+
         cleaned_data = super().clean()
         first_name = cleaned_data.get('first_name')
         last_name = cleaned_data.get('last_name')
@@ -42,10 +46,11 @@ class EmpForm(ModelForm):
         if not department:
             self.add_error('department', "Please choose a Department")
         if not role:
-            self.add_error('role', "Please choose a Department")
+            self.add_error('role', "Please choose a Role")
 
-        
-        
+        if Employee.objects.filter(email=email).exists():
+            self.add_error('email','This email already exists!')
+
         if self.validate(first_name):
             self.add_error('first_name','First Name should not contain numbers or special characters!')
         if self.validate(last_name):
