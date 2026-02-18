@@ -3,18 +3,48 @@ from .models import Employee, Role, Department
 from .forms import EmpForm
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
+from django.db.models import Q
 import datetime
 
 # Create your views here.
 def emp_list(request):
-    emp = Employee.objects.filter(show = True).order_by('join_date')
+    order = request.GET.get('order_by','join_date')
+    emp = Employee.objects.filter(show = True).order_by(order)
+    query = request.GET.get("q", None)
+    
+    if query:
+        emps = Employee.objects.filter(
+            Q(first_name__icontains = query)|Q(last_name__icontains = query)|Q(email__icontains = query)|Q(department__name__icontains = query)|Q(role__name__icontains = query)|Q(emp_id__icontains = query)
+            ).order_by(order).filter(show = True)
+        return render(request, 'emp_reg/emp_list.html', {'emp' : emps})
     return render(request, 'emp_reg/emp_list.html', {'emp' : emp})
 
 def emp_del_list(request):
-    emp = Employee.objects.filter(show = False).order_by('join_date')
+    order = request.GET.get('order_by','join_date')
+    emp = Employee.objects.filter(show = False).order_by(order)
+    query = request.GET.get("q", None)
+    
+    if query:
+        emps = Employee.objects.filter(
+            Q(first_name__icontains = query)|Q(last_name__icontains = query)|Q(email__icontains = query)|Q(department__name__icontains = query)|Q(role__name__icontains = query)|Q(emp_id__icontains = query)
+            ).order_by(order).filter(show = False)
+        return render(request, 'emp_reg/emp_del_list.html', {'emp' : emps})
     return render(request, 'emp_reg/emp_del_list.html', {'emp' : emp})
 
 # def emp_search(request):
+#     order = request.GET.get('order_by','join_date')
+#     query = request.GET.get("q")
+#     emp = Employee.objects.filter(
+#         Q(first_name__icontains = query)|Q(last_name__icontains = query)|Q(email__icontains = query)|Q(department__name__icontains = query)|Q(role__name__icontains = query)|Q(emp_id__icontains = query)
+#     ).order_by(order).filter(show = True)
+#     return render(request, 'emp_reg/emp_list.html', {'emp' : emp})
+
+# def emp_del_search(request):
+#     query = request.GET.get("q")
+#     emp = Employee.objects.filter(
+#         Q(first_name__icontains = query)|Q(last_name__icontains = query)|Q(email__icontains = query)|Q(department__name__icontains = query)|Q(role__name__icontains = query)|Q(emp_id__icontains = query)
+#     ).order_by('join_date').filter(show = False)
+#     return render(request, 'emp_reg/emp_search.html', {'emp' : emp})
       
 
 def emp_new(request):
@@ -80,6 +110,8 @@ def emp_rest_conf(request, pk):
     post.show = True
     post.save()
     return redirect('emp_del_list')
+
+
 
 def load_roles(request):
     department_id = request.GET.get('department')

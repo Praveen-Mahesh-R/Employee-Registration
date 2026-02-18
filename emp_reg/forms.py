@@ -6,6 +6,21 @@ from .models import Employee, Role
 class DateInput(forms.DateInput):
     input_type = 'date'
 
+# class EmpSearch(forms.forms):
+    
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.fields['employee'].queryset = Employee.objects.all()
+#         if 'search' in self.data:
+#             try:
+#                 department_id = int(self.data.get('department'))
+#                 self.fields['role'].queryset = Role.objects.filter(department_id=department_id).order_by('name')
+#             except (ValueError, TypeError):
+#                 pass  
+#         elif self.instance.pk:
+#             self.fields['role'].queryset = self.instance.department.role_set.order_by('name')
+
+
 class EmpForm(ModelForm):
 
 

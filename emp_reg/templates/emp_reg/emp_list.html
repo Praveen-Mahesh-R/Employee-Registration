@@ -1,12 +1,17 @@
 {% extends 'emp_reg/base.html' %}
 {% block content %}
+
+        <form action="{% url 'emp_list' %}" method="get">
+        <input name="q" type="text" placeholder="Search...">
+        </form>
         <table class = emp-table>
             <tr>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Date Joined</th>
+                <th><a href="?order_by=emp_id">ID</a></th>
+                <th><a href="?order_by=first_name">Full Name</a></th>
+                <th><a href="?order_by=email">Email</a></th>
+                <th><a href="?order_by=department">Department</a></th>
+                <th><a href="?order_by=role">Role</a></th>
+                <th><a href="?order_by=join_date">Date Joined</a></th>
                 <th></th>
 
             </tr>

@@ -18,7 +18,14 @@
     border: 1px solid;
     width: 100%;
 }
-
+.emp-table th a{
+    text-decoration: none;
+    color: black;
+}
+.emp-table td a{
+    text-decoration: none;
+    color: darkblue;
+}
 .emp-table td svg{
     color: black;
     max-width: 40px;
