@@ -1,6 +1,6 @@
 {% extends 'emp_reg/base.html' %}
 {% block content %}
-        <form action="{% url 'emp_del_list' %}" method="get">
+        <form action="{% url 'emp_del_list' %}" method="get" class="search">
         <input name="q" type="text" placeholder="Search...">
         </form>
         <table class = emp-table>

@@ -1,7 +1,9 @@
 {% extends 'emp_reg/base.html' %}
-{% block content %}
 
-        <form action="{% url 'emp_list' %}" method="get">
+{% block content %}
+<!-- {% if user.is_authenticated %} -->
+
+        <form action="{% url 'emp_list' %}" method="get" class="search">
         <input name="q" type="text" placeholder="Search...">
         </form>
         <table class = emp-table>
@@ -34,8 +36,14 @@
                 </tr>
             {% endfor %}
         </table>
+        <div class = dustbin>
         <button onclick="window.location= 'emp/deleted-record';">
                             {% include './icons/recycle.svg' %} Recycle Bin
         </button>
+        </div>
+<!-- {% else %}
+<p>You are not logged in</p>
+<a href="{% url 'login' %}">Log In</a>
+{% endif %} -->
 {% endblock %}
     
