@@ -19,18 +19,11 @@
                     <td>{{ emps.role|linebreaksbr }}</td>
                     <td>{{ emps.join_date|date:"d-m-Y"}}</td>
                     <td>
-                        <a href="{% url 'emp_edit' pk=emps.pk %}">
-                            {% include './icons/pencil-fill.svg' %}
-                        </a>
-                        <a href="{% url 'emp_remove' pk=emps.pk %}">
-                            {% include './icons/trash.svg' %}
+                        <a href="{% url 'emp_restore' pk=emps.pk %}">
+                            Restore Back
                         </a>
                     </td>
                 </tr>
             {% endfor %}
         </table>
-        <button onclick="window.location= 'emp/deleted-record';">
-                            {% include './icons/recycle.svg' %} Recycle Bin
-        </button>
 {% endblock %}
-    

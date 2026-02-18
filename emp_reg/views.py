@@ -10,6 +10,10 @@ def emp_list(request):
     emp = Employee.objects.filter(show = True).order_by('join_date')
     return render(request, 'emp_reg/emp_list.html', {'emp' : emp})
 
+def emp_del_list(request):
+    emp = Employee.objects.filter(show = False).order_by('join_date')
+    return render(request, 'emp_reg/emp_del_list.html', {'emp' : emp})
+
 # def emp_search(request):
       
 
@@ -66,6 +70,16 @@ def emp_delete(request, pk):
     post.show = False
     post.save()
     return redirect('emp_list')
+
+def emp_restore(request, pk):
+    post = get_object_or_404(Employee, pk=pk)
+    return render(request, 'emp_reg/emp_restore.html', {'emp': post})
+
+def emp_rest_conf(request, pk):
+    post = get_object_or_404(Employee, pk=pk)
+    post.show = True
+    post.save()
+    return redirect('emp_del_list')
 
 def load_roles(request):
     department_id = request.GET.get('department')

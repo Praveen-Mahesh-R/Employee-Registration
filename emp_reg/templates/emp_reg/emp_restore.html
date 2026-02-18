@@ -1,0 +1,12 @@
+{% extends 'emp_reg/base.html' %}
+
+{% block content %}
+    <h4>Are you sure you want to Restore?</h4>
+    <div class = yes-button>
+        <a href="{% url 'emp_rest_conf' pk=emp.pk %}">YES</a>
+    </div>    
+    <div class = no-button>
+        <a href="{% url 'emp_del_list' %}">NO</a>
+    </div>
+
+{% endblock %}
