@@ -1,15 +1,17 @@
-{% extends 'emp_reg/base.html' %}
+{% extends 'emp_reg/emp_home.html' %}
 
-{% block content %}
+{% block admin %}
 <!-- {% if user.is_authenticated %} -->
 
-        <form action="{% url 'emp_list' %}" method="get" class="search">
+        <form action="{% url 'emp_home' %}" method="get" class="search">
         <input name="q" type="text" placeholder="Search...">
         </form>
         <table class = emp-table>
             <tr>
                 <th><a href="?order_by=emp_id">ID</a></th>
                 <th><a href="?order_by=first_name">Full Name</a></th>
+                <th><a href="?order_by=gender">Gender</a></th>
+                <th><a href="?order_by=date_of_birth">Date of Birth</a></th>
                 <th><a href="?order_by=email">Email</a></th>
                 <th><a href="?order_by=department">Department</a></th>
                 <th><a href="?order_by=role">Role</a></th>
@@ -18,9 +20,19 @@
 
             </tr>
             {% for emps in emp %}
+            
                 <tr>
                     <td>{{ emps.emp_id|linebreaksbr }}</td>
                     <td>{{ emps.first_name|linebreaksbr  }} {{ emps.last_name|linebreaksbr }}</td>
+                    {% if emps.gender == 'M' %}
+                    <td>Male</td>
+                    {% elif emps.gender == 'F' %}
+                    <td>Female</td>
+                    {% else %}
+                    <td>Others</td>
+                    {% endif %}
+                    
+                    <td>{{ emps.date_of_birth|date:"d-m-Y"}}</td>
                     <td>{{ emps.email|linebreaksbr }}</td>
                     <td>{{ emps.department|linebreaksbr }}</td>
                     <td>{{ emps.role|linebreaksbr }}</td>
@@ -37,9 +49,11 @@
             {% endfor %}
         </table>
         <div class = dustbin>
-        <button onclick="window.location= 'emp/deleted-record';">
-                            {% include './icons/recycle.svg' %} Recycle Bin
-        </button>
+        <form action="{% url 'emp_del_list' %}" method="post" class = "dustbin">
+            {% csrf_token %}
+            <button type="submit">{% include './icons/recycle.svg' %} Recycle Bin</button>
+        </form>
+        </a>
         </div>
 <!-- {% else %}
 <p>You are not logged in</p>

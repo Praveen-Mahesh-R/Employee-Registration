@@ -1,7 +1,17 @@
-{% extends 'emp_reg/base.html' %}
+{% extends 'emp_reg/emp_home.html' %}
 
-{% block content %}
+{% block admin %}
     <h2>Edit Employee details:</h2>
+    <form method="POST" id="emp-form" data-roles-url="{% url 'ajax_load_roles' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>Leave Join date empty to use today's date</p>
+        <button type="submit" class="save btn btn-secondary">Save</button>
+    </form>
+{% endblock %}
+
+{% block employee %}
+    <h2>Edit Your details:</h2>
     <form method="POST" id="emp-form" data-roles-url="{% url 'ajax_load_roles' %}">
         {% csrf_token %}
         {{ form.as_p }}

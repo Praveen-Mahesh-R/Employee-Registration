@@ -1,11 +1,24 @@
-{% extends 'emp_reg/base.html' %}
+{% extends 'emp_reg/emp_home.html' %}
 
-{% block content %}
+{% block admin %}
     <h2>Add New Employee</h2>
     <form method="POST" id="emp-form" data-roles-url="{% url 'ajax_load_roles' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <p>Leave Join date empty to use today's date</p>
+        <h4>Account Registration Details:</h4>
+        {% for field in rform %}
+        <p>
+            {% if field.errors %}
+            <ul class="errorlist">
+                {% for error in field.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {{ field.label_tag }} {{ field }}
+        </p>
+        {% endfor %}
         <button type="submit" class="save btn btn-secondary">Save</button>
     </form>
 

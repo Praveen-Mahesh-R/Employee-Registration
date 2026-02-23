@@ -1,0 +1,17 @@
+{% extends 'emp_reg/base.html' %}
+
+{% block content %}
+
+{% if user.is_superuser %}
+
+{% block admin %}
+{% endblock %}
+
+{% else %}
+
+{% block employee %}
+{% endblock %}
+
+{% endif %}
+
+{% endblock %}

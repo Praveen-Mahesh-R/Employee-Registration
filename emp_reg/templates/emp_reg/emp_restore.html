@@ -1,6 +1,6 @@
-{% extends 'emp_reg/base.html' %}
+{% extends 'emp_reg/emp_home.html' %}
 
-{% block content %}
+{% block admin %}
     <h4>Are you sure you want to Restore?</h4>
     <div class = yes-button>
         <a href="{% url 'emp_rest_conf' pk=emp.pk %}">YES</a>

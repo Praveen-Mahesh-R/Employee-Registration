@@ -150,6 +150,10 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = "emp_list"
+LOGIN_REDIRECT_URL = "emp_home"
 
-LOGOUT_REDIRECT_URL = "emp_list"
+LOGOUT_REDIRECT_URL = "emp_home"
+
+# CSRF_FAILURE_VIEW = 'accounts.views.csrf_failure'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'

@@ -1,12 +1,12 @@
-{% extends 'emp_reg/base.html' %}
+{% extends 'emp_reg/emp_home.html' %}
 
-{% block content %}
+{% block admin %}
     <h4>Are you sure you want to delete?</h4>
     <div class = yes-button>
         <a href="{% url 'emp_delete' pk=emp.pk %}">YES</a>
     </div>    
     <div class = no-button>
-        <a href="{% url 'emp_list' %}">NO</a>
+        <a href="{% url 'emp_home' %}">NO</a>
     </div>
 
 {% endblock %}
