@@ -1,11 +1,17 @@
 {% extends 'emp_reg/emp_home.html' %}
 
 {% block admin %}
-<!-- {% if user.is_authenticated %} -->
-
+<div>
         <form action="{% url 'emp_home' %}" method="get" class="search">
         <input name="q" type="text" placeholder="Search...">
         </form>
+        <div>
+        <form action="{% url 'admin_detail' %}" method="post" class = "admin-profile">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-secondary">Admin Profile</button>
+        </form>
+
+        </div>
         <table class = emp-table>
             <tr>
                 <th><a href="?order_by=emp_id">ID</a></th>
@@ -51,13 +57,10 @@
         <div class = dustbin>
         <form action="{% url 'emp_del_list' %}" method="post" class = "dustbin">
             {% csrf_token %}
-            <button type="submit">{% include './icons/recycle.svg' %} Recycle Bin</button>
+            <button type="submit" class="btn btn-secondary">{% include './icons/recycle.svg' %} Recycle Bin</button>
         </form>
-        </a>
         </div>
-<!-- {% else %}
-<p>You are not logged in</p>
-<a href="{% url 'login' %}">Log In</a>
-{% endif %} -->
+</div>
+
 {% endblock %}
     

@@ -17,8 +17,8 @@
                         </a>
                         <h1><a href="{% url 'emp_home' %}">Employee Registration</a></h1>
                     {% else %}
-                        <a href="{% url 'emp_user_edit' email=user.email %}" class="top-menu"> Edit
-                            {% include './icons/pencil-fill.svg' %}
+                        <a href="{% url 'emp_user_edit' %}" class="top-menu-user"> Edit &nbsp;
+                            {% include './icons/pencil.svg' %}
                         </a>
                         <h1><a href="{% url 'emp_home' %}">Employee Registration</a></h1>
                     {% endif %}
@@ -34,13 +34,13 @@
                     {% block content %}
                     {% endblock %}
 
-                    <form action="{% url 'logout' %}" method="post" class = "logout">
+                    <form action="{% url 'logout_check' %}" method="post" class = "logout">
                         {% csrf_token %}
-                          <button type="submit">Log Out</button>
+                          <button type="submit" class = "btn btn-secondary">Log Out</button>
                     </form>
                     {% else %}
                     <p>Welcome to the Employee Management website.</p>
-                    <a href="{% url 'login' %}">Log In</a>
+                    <a href="{% url 'login' %}" class="btn btn-secondary">Log In</a>
                     {% endif %}
 
                     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

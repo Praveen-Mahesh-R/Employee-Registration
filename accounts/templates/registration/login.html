@@ -7,13 +7,13 @@
     {% if error %}
     <p style="color: red;">{{ error }}</p>
     {% endif %}
-    <div>
+    <div style="margin: 10px;">
         <input type="text" name="username" placeholder="username"/>
     </div>
-    <div>
-        <input type="password" name="password" placeholder="password" />
+    <div style="margin: 10px;">
+        <input type="password" name="password" placeholder="password"/>
     </div>
-    <button type="submit", onclick="window.location= 'login';">Log In</button>
+    <button type="submit", onclick="window.location= 'login';" class="btn btn-secondary">Log In</button>
 </form>
 
 {% endblock %}

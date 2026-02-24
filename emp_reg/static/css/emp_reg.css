@@ -39,13 +39,14 @@
 }
 
 .emp-table th,
-.emp-table td{
+.emp-table td {
     padding: 10px;
 }
 .emp-table{
     border: 1px solid;
 }
-.top-menu {
+.top-menu,
+.top-menu-user {
     float: right;
     text-decoration: none;
     color: aliceblue;
@@ -55,7 +56,18 @@
     max-width: 40px;
     -webkit-filter: invert(90%);
     filter: invert(90%);
-    float: right;
+    
+}
+
+.top-menu-user {
+    margin-top: 10px;
+    
+}
+
+.top-menu-user svg {
+    max-width: 40px;
+    
+    
 }
 .yes-button {
     float: left;
@@ -91,13 +103,18 @@
 }
 
 .dustbin {
-    margin: 10px -35px 5px 5px;
+    margin: 5px 5px 5px 5px;
     float: right;
 }
 .search {
+    float: left;
     margin: 10px;
 }
 
 .logout {
     margin: 10px;
+}
+
+.admin-profile {
+    float: right;
 }

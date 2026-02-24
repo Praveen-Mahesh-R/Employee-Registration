@@ -19,5 +19,39 @@
     <p><b>Role: </b>{{ emps.role|linebreaksbr }}</p>
     <p><b>Date of Joining: </b>{{ emps.join_date|date:"d-m-Y"}}</p>
 </article>
-<a href="{% url 'update_password' %}" class="btn btn-secondary">Update Password</a>
+<a href="{% url 'update_password' %}" class="btn btn-secondary" style="float: right;">Update Password</a>
+{% endblock %}
+
+{% block admin %}
+        <a href="{% url 'emp_user_edit' %}" class="btn btn-secondary" style="float: right;"> Edit &nbsp;
+            {% include './icons/pencil.svg' %}
+        </a>
+<article class="employee_details">
+    <h2>Your Details</h2>
+    <p><b>Id: </b>{{ emps.emp_id|linebreaksbr }}</p>
+    <p><b>Name: </b>{{ emps.first_name|linebreaksbr  }} {{ emps.last_name|linebreaksbr }}</p>
+    <p><b>Gender: </b>{% if emps.gender == 'M' %}
+                    Male
+                    {% elif emps.gender == 'F' %}
+                    Female
+                    {% else %}
+                    Others
+                    {% endif %}
+    </p>
+    <p><b>Date of Birth: </b>{{ emps.date_of_birth|date:"d-m-Y"}}</p>
+    <p><b>Email: </b>{{ emps.email|linebreaksbr }}</p>
+    <p><b>Department: </b>{{ emps.department|linebreaksbr }}</p>
+    <p><b>Role: </b>{{ emps.role|linebreaksbr }}</p>
+    <p><b>Date of Joining: </b>{{ emps.join_date|date:"d-m-Y"}}</p>
+</article>
+<a href="{% url 'update_password' %}" class="btn btn-secondary" style="float: right;">Update Password</a>
+
+<style>
+    .logout {
+        display: none;
+    }
+    .top-menu {
+        display: none;
+    }
+</style>
 {% endblock %}

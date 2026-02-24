@@ -1,0 +1,17 @@
+{% extends "registration/base.html" %}
+
+{% block content %}
+<h4>Are you sure you want to Logout?</h4>
+        
+    <div>
+        <a href="{% url 'emp_home' %}" class = "btn btn-success" style="float: left; margin: 10px;">Don't Logout</a>
+    </div>
+
+    <div>
+        <form action="{% url 'logout' %}" method="post" class = "logout" style="float: left;">
+            {% csrf_token %}
+            <button type="submit" class = "btn btn-danger">Log Out</button>
+        </form>
+    </div>
+
+{% endblock %}
