@@ -162,7 +162,7 @@ def emp_user_edit(request):
             elif role_old.pk is not role.pk:
                 post.emp_id = post.emp_id[:2] + str(f"{role.pk:02}") + post.emp_id[4:]
             post.save()
-            return redirect('emp_home', email=post.email)
+            return redirect('emp_home')
     else:
         form = EmpForm(instance=obj)
     return render(request, 'emp_reg/emp_edit.html', {'form': form})
